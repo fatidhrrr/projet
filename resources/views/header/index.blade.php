@@ -25,7 +25,7 @@
                 </thead>
              
                 <tbody>
-                    @foreach ($photos as $item)
+                    @foreach ($headers as $item)
                     <tr>
                     <th scope="row" class="text-center">{{$item->id}}</th>
                     <td class="text-center">
@@ -34,9 +34,12 @@
                     <td class="text-center">{{$item->titre}}</td>
                     <td class="text-center">{{$item->text}}</td>
                     <td>
-                    <a href="{{route('editPhotos', $item->id)}}" title="Edit">
-                               <i class="mx-2 text-warning fa-2x fas fa-edit"></i>
-                            </a>
+                        <form action="{{route('header.edit', $item)}}">
+                        @csrf
+                        <button class="btn btn-white">
+                            <i class="mx-2 text-warning fa-2x fas fa-edit"></i>
+                        </button>
+                        </form>
                         </td>
                     </tr>
                     @endforeach

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
+use App\Roles;
 use Illuminate\Http\Request;
-use App\Index;
 
-class IndexController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $photos = Index::all();
-        return view('admin.index.index', compact('photos'));
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class IndexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Roles $roles)
     {
         //
     }
@@ -54,40 +52,33 @@ class IndexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Roles $roles)
     {
-        $index=Index::find($id);
-        return view('admin.index.edit', compact('index'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Roles $roles)
     {
-        $index=Index::find($id);
-        $photo=Storage::disk('public')->put('', $request->file('photo'));
-        $index->photo=$photo;
-        $index->titre=$request->input("titre");
-        $index->text=$request->input("text");
-        $index->save();
-        return redirect()->route("photos");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Roles $roles)
     {
         //
     }

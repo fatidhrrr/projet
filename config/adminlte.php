@@ -220,9 +220,30 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'index',
-            'url'  => '/photos',
+            'text' => 'Header',
+            'url'  => 'header',
             'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'About',
+            'url'  => 'about',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Product',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+               [
+                'text' => 'ProductView',
+                'url'  => 'about',
+                'icon' => 'fas fa-fw fa-user',
+               ],
+               [
+                'text' => 'AddProduct',
+                'url'  => 'product/create',
+                'icon' => 'fas fa-fw fa-user',
+               ],
+            ]
         ],
         [
             'text' => 'change_password',

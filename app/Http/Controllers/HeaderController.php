@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Header;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Product;
 
-class ProductController extends Controller
+
+class HeaderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all(); 
-        return view('products', compact('products'));
+        $headers = Header::all();
+        return view('header.index', compact('headers'));
     }
 
     /**
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.addproducts');
+        //
     }
 
     /**
@@ -37,25 +38,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        Storage::disk('public')->delete($product->photo);
-        $image=Storage::disk('public')->put('', $request->photo);
-
-        $product->soustitre=$request->input('soustitre');
-        $product->titre=$request->input('titre');
-        $product->photo=$image;
-        $product->description=$request->input('description');
-        $product->save();
-        return redirect()->route('product.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Header  $header
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Header $header)
     {
         //
     }
@@ -63,33 +55,38 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Header  $header
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Header $header)
     {
-        //
+        return view('header.edit', compact('header'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Header  $header
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Header $header)
     {
-        
+        $photo=Storage::disk('public')->put('', $request->file('photo'));
+        $header->photo=$photo;
+        $header->titre=$request->input("titre");
+        $header->text=$request->input("text");
+        $header->save();
+        return redirect()->route("header.index");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Header  $header
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Header $header)
     {
         //
     }

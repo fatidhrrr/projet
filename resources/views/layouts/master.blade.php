@@ -41,23 +41,46 @@
                         <a class="nav-link text-uppercase text-expanded" href="/about">About</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="/products">Products</a>
+                    <a class="nav-link text-uppercase text-expanded" href="/product">Products</a>
                     </li>
                     <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase text-expanded" href="/store">Store</a>
                     </li>
-                    <li class="nav-item px-lg-4">
+                    {{-- <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase text-expanded" href="/home">BackOffice</a>
+                    </li> --}}
+                    @if(Auth::check() && Auth::user()->role_id ==1)
+                    <li class="nav-item px-lg-4" ><a class="nav-link text-uppercase text-expanded" href="{{route('admin.index')}}">ADMIN</a></li>
+                    @else
+                    @endif
+
+                    @guest
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase text-expanded" href="{{ route('login') }}">{{ ('Login') }}</a></li>
+                    @if (Route::has('register'))
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase text-expanded" href="{{ route('register') }}">{{ ('Register') }}</a></li>
+                    @endif
+                    @else
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="{{ route('logout') }}" onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
                     </li>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                    @endguest
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Bootstrap core JavaScript -->
-    
+
     @yield('content')
-    
+
     <footer class="footer text-faded text-center py-5">
         <div class="container">
             <p class="m-0 small">Copyright &copy; Your Website 2019</p>

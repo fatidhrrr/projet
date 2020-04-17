@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Indices;
+use App\Header;
+use App\About;
+use App\Product;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -14,8 +16,9 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $indices=Indices::all();
-        return view('index', compact('indices'));
+        $products = Product::all();
+        $headers = Header::all();
+        return view('welcome', compact('headers', 'products'));
     }
 
     /**

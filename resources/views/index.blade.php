@@ -34,14 +34,14 @@
    <section class="page-section clearfix">
        <div class="container">
            <div class="intro">
-               @foreach($indices as $indice)
-                   <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{asset("storage/".$indice->photo)}}" alt="">
+               @foreach($headers as $header)
+                   <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{asset("storage/".$header->photo)}}" alt="">
                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                    <h2 class="section-heading mb-4">
                        <span class="section-heading-upper">Fresh Coffee</span>
-                       <span class="section-heading-lower">{{$indice->titre}}</span>
+                       <span class="section-heading-lower">{{$header->titre}}</span>
                    </h2>
-                   <p class="mb-3">{{$indice->text}}
+                   <p class="mb-3">{{$header->text}}
                    </p>
                    <div class="intro-button mx-auto">
                        <a class="btn btn-primary btn-xl" href="#">Visit Us Today!</a>

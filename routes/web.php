@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Auth::routes();
 
 // 
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/index', 'IndexController@index')->name('index');
 
 Route::get('/about', 'AboutController@index')->name('about');
 
@@ -31,6 +29,15 @@ Route::get('/store', 'StoreController@index')->name('store');
 
 // Photo
 
-Route::get('/photos',"IndexController@index")->name("photos");
-Route::get('/editPhotos/{id}', "IndexController@edit")->name('editPhotos');
-Route::post('/updatePhotos/{id}', "IndexController@update")->name("updatePhotos");
+Route::resource('header', 'HeaderController');
+
+Route::resource('admin', 'AdminController');
+
+Route::resource('role', 'RolesController');
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
+
+Route::resource('product', 'ProductController');
