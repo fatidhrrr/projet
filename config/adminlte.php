@@ -167,7 +167,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => '/',
+    'dashboard_url' => '/home',
 
     'logout_url' => 'logout',
 
@@ -219,6 +219,11 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'account_settings'],
+        [  
+            'text' => 'Website',
+            'url'  => '/',
+            'icon' => 'fas fa-fw fa-desktop',
+        ],
         [
             'text' => 'Header',
             'url'  => 'header',
@@ -226,7 +231,7 @@ return [
         ],
         [
             'text' => 'About',
-            'url'  => 'about',
+            'url'  => 'aboutview',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -235,15 +240,20 @@ return [
             'submenu' => [
                [
                 'text' => 'ProductView',
-                'url'  => 'about',
-                'icon' => 'fas fa-fw fa-user',
+                'url'  => '/productview',
+                'icon' => 'far fa-fw fa-eye',
                ],
                [
                 'text' => 'AddProduct',
                 'url'  => 'product/create',
-                'icon' => 'fas fa-fw fa-user',
+                'icon' => 'fas fa-fw fa-plus',
                ],
             ]
+        ],
+        [
+            'text' => 'Contact',
+            'url'  => 'contactview',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'change_password',

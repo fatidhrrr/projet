@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Header;
+use App\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-
-class HeaderController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,14 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        $headers = Header::all();
-        return view('header.index', compact('headers'));
+        $contacts = Contact::all(); 
+        return view('contact', compact('contacts'));
+    }
+
+    public function indexview()
+    {
+        $contacts = Contact::all(); 
+        return view('contact.contactview', compact('contacts'));
     }
 
     /**
@@ -38,16 +42,26 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'email|required',
+        ]);
+        $contact = new Contact();
+        $contact->nom=$request->input('nom');
+        $contact->prenom=$request->input('prenom');
+        $contact->email=$request->input('email');
+        $contact->password=$request->input('password');
+        $contact->message=$request->input('message');
+        $contact->save();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Header  $header
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Header $header)
+    public function show(Contact $contact)
     {
         //
     }
@@ -55,42 +69,33 @@ class HeaderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Header  $header
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Header $header)
+    public function edit(Contact $contact)
     {
-        return view('header.edit', compact('header'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Header  $header
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Header $header)
+    public function update(Request $request, Contact $contact)
     {
-        // Condition si je ne selectionne pas de photo
-        if ($request->hasFile('photo')) {
-            $photo=Storage::disk('public')->put('', $request->file('photo'));
-            $header->photo=$photo;
-        }
-        // dd($request->hasFile('photo'));
-        $header->titre=$request->input("titre");
-        $header->text=$request->input("text");
-        $header->save();
-        return redirect()->route("header.index");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Header  $header
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Header $header)
+    public function destroy(Contact $contact)
     {
         //
     }

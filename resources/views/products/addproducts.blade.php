@@ -3,14 +3,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center">AddProducts</h1>
+    <h1 class="text-center">Add Products</h1>
 @stop
 
 @section('content')
 
 <div class="container">
-
-
     <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-row">

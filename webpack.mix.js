@@ -11,5 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
+// Compile le fichier footer.scss et le copie dans le dossier public/css
+
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+   .sass('resources/sass/footer.scss', 'public/css');

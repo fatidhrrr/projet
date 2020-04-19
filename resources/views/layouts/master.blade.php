@@ -46,6 +46,9 @@
                     <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase text-expanded" href="/store">Store</a>
                     </li>
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="/contact">Contact</a>
+                    </li>
                     {{-- <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase text-expanded" href="/home">BackOffice</a>
                     </li> --}}

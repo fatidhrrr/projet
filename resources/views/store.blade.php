@@ -1,6 +1,5 @@
-@section('content')
-
 @extends('layouts/master')
+@section('content')
 
 <section class="page-section cta">
       <div class="container">

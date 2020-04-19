@@ -1,0 +1,8 @@
+$secondary: #2F170F !default;
+
+.footer {
+  background-color: fade-out($secondary, 0.1);
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}

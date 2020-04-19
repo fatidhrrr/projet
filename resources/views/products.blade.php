@@ -1,9 +1,9 @@
+@extends('layouts/master')
 @section('content')
 
-@extends('layouts/master')
-
-@foreach($products as $product)
-@if ($product->id%2!=0)
+@foreach($products as $index => $product)
+{{-- $index affiche la position du produit de mon tableau --}}
+@if ($index%2!=0)
     <section class="page-section">
     <div class="container">
       <div class="product-item">
@@ -47,9 +47,6 @@
   </section>
 @endif
   
-
 @endforeach
-  
-  
 
 @endsection

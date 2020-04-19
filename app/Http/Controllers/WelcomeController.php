@@ -18,7 +18,8 @@ class WelcomeController extends Controller
     {
         $products = Product::all();
         $headers = Header::all();
-        return view('welcome', compact('headers', 'products'));
+        $abouts = About::all();
+        return view('welcome', compact('headers', 'products', 'abouts'));
     }
 
     /**

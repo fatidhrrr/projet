@@ -130,8 +130,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'email' => "Veuillez entrer plus de 5 caractères",
         ],
     ],
 

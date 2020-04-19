@@ -1,6 +1,5 @@
-@section('content')
-
 @extends('layouts/master')
+@section('content')
    
    {{-- <!-- Navigation -->
    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
